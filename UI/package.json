@@ -1,0 +1,23 @@
+{
+  "name": "Explv.github.io",
+  "version": "1.0.0",
+  "description": "The Dax Path tool makes use of @itsdax great web walking API https://github.com/itsdax/Runescape-Web-Walker-Engine\r All credits to him.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Explv/Explv.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Explv/Explv.github.io/issues"
+  },
+  "homepage": "https://github.com/Explv/Explv.github.io#readme",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
