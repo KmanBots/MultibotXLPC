@@ -1,33 +1,40 @@
 const express = require('express');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 const {OsrsPlayer} = require('./models/player');
+const {connectToTestDB} = require('./db');
 
 const app = express()
-
-import {connectToDB} from './db';
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
 app.post('/osrs-players', (req, res) => {
-  const newOsrsPlayer = new OsrsPlayer({
-    name: req.body.name,
-    combatLevel: req.body.combatLevel
-  });
+  // const newOsrsPlayer = new OsrsPlayer({
+  //   name: req.body.name,
+  //   combatLevel: req.body.combatLevel
+  // });
 
-  newOsrsPlayer.save()
-    .then(osrsPlayer => res.json(osrsPlayer))
-    .catch(err => res.status(400).json(err));
+  // newOsrsPlayer.save()
+  //   .then(osrsPlayer => res.json(osrsPlayer))
+  //   .catch(err => res.status(400).json(err));
 
-    return res.json(newOsrsPlayer);
+  //   return res.json(newOsrsPlayer);
+
+  res.send(true);
 });
 
-connectToDB().then(()=> app.listen(3000, () => {
-  console.log("Server listening on port 3000");
-}))
+module.exports = {app}
 
-export default app;
+
+//  app.listen(3000, () => {
+//   console.log("Server listening on port 3000");
+// })
+
+
+// connectToTestDB().then(()=> app.listen(3000, () => {
+//   console.log("Server listening on port 3000");
+// }))
 
 // getUserStats("Bucket Boi");
 

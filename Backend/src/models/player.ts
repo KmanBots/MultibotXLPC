@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const osrsPlayerSchema = new mongoose.Schema({
   name: {
@@ -11,5 +11,6 @@ const osrsPlayerSchema = new mongoose.Schema({
   }
 });
 
-export const OsrsPlayer = mongoose.model('OsrsPlayer', osrsPlayerSchema);
+const OsrsPlayer = mongoose.model('OsrsPlayer', osrsPlayerSchema);
 
+module.exports = { OsrsPlayer }

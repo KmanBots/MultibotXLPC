@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
-      "target": "commonjs",                          
-      "module": "es2016",                   
+      "moduleDetection": "force",
+      "target": "es6",                          
+      "module": "commonjs",                   
       "outDir": "./dist",                      
       "rootDir": "./src",                     
       "strict": true,                          
@@ -9,5 +10,5 @@
       "moduleResolution": "node",          
       "skipLibCheck": true,                   
       "type": "module"
-    }  
+    }
   }
