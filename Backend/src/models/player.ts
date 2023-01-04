@@ -14,3 +14,5 @@ const osrsPlayerSchema = new mongoose.Schema({
 const OsrsPlayer = mongoose.model('OsrsPlayer', osrsPlayerSchema);
 
 module.exports = { OsrsPlayer }
+
+export {};

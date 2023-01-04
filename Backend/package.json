@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "ts-node app.ts",
-    "dev": "ts-node src/app.ts",
+    "start": "ts-node index.ts",
+    "dev": "ts-node src/index.ts",
     "build": "tsc -p .",
     "test": "jest"
   },

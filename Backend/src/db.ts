@@ -31,4 +31,5 @@ async function connectToDB() {
     }
 }
 
-module.exports = { connectToDB, connectToTestDB}
+module.exports = { connectToDB, connectToTestDB }
+export {};

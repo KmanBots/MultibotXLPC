@@ -25,7 +25,7 @@ app.post('/osrs-players', (req, res) => {
 });
 
 module.exports = {app}
-
+export {};
 
 //  app.listen(3000, () => {
 //   console.log("Server listening on port 3000");
