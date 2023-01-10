@@ -2,14 +2,30 @@ const express = require('express');
 // const dotenv = require('dotenv');
 const {OsrsPlayer} = require('./models/player');
 const {connectToTestDB} = require('./db');
+const bodyParser = require('body-parser')
+
+let loc;
 
 const app = express()
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
+app.get("/osrs-players", (req, res) => {
+  res.send({
+    loc
+  });
+});
+
+
 app.post('/osrs-players', (req, res) => {
+  console.log(req.body);
+  loc = req.body
   // const newOsrsPlayer = new OsrsPlayer({
   //   name: req.body.name,
   //   combatLevel: req.body.combatLevel
