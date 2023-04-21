@@ -4,8 +4,8 @@
   "description": "The Dax Path tool makes use of @itsdax great web walking API https://github.com/itsdax/Runescape-Web-Walker-Engine\r All credits to him.",
   "main": "index.js",
   "scripts": {
-    "start": "http-server"
-  },
+    "dev": "live-server"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Explv/Explv.github.io.git"

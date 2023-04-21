@@ -20,10 +20,14 @@ $(document).ready(function () {
 
     const currentUrl = new URL(window.location.href);
 
-    const urlCentreX = currentUrl.searchParams.get("centreX");
-    const urlCentreY = currentUrl.searchParams.get("centreY");
-    const urlCentreZ = currentUrl.searchParams.get("centreZ");
-    const urlZoom = currentUrl.searchParams.get("zoom");
+    // const urlCentreX = currentUrl.searchParams.get("centreX");
+    // const urlCentreY = currentUrl.searchParams.get("centreY");
+    // const urlCentreZ = currentUrl.searchParams.get("centreZ");
+    // const urlZoom = currentUrl.searchParams.get("zoom");
+    const urlCentreX = '3234';
+    const urlCentreY = '3652';
+    const urlCentreZ = '0'
+    const urlZoom = '10'
 
     const urlRegionID = currentUrl.searchParams.get("regionID");
 
@@ -32,6 +36,45 @@ $(document).ready(function () {
         zoomControl: false,
         renderer: L.canvas()
     });
+
+
+
+    // From one corner of region to another
+    var circle = L.circle([-77.466, -133.5935], {
+        color: 'red',
+        // fillColor: '#f03',
+        // fillOpacity: 0.5,
+        radius: 10
+    }).addTo(map);
+    
+    // // const corner = L.circle([-77.466, -134.297 ],
+
+    var circle = L.circle([-77.466, -134.297], {
+        color: 'blue',
+        // fillColor: '#f03',
+        // fillOpacity: 0.5,
+        radius: 10
+    }).addTo(map);
+
+
+    
+    var circle = L.circle([-77.3895, -134.297], {
+        color: 'green',
+        // fillColor: '#f03',
+        // fillOpacity: 0.5,
+        radius: 10
+    }).addTo(map);
+
+
+    // var circle2 = L.circle([-77.466, -134.297.1 ], {
+    //     color: 'red',
+    //     fillColor: '#f03',
+    //     fillOpacity: 0.5,
+    //     radius: 10
+    // }).addTo(map);
+
+
+    // var marker = L.marker([3065, 3700]).addTo(map);
 
     map.plane = 0;
 
@@ -57,7 +100,7 @@ $(document).ready(function () {
     map.addControl(new CoordinatesControl());
     map.addControl(new RegionBaseCoordinatesControl());
     map.addControl(new LocalCoordinatesControl());
-    map.addControl(L.control.zoom());
+    // map.addControl(L.control.zoom());
     map.addControl(new PlaneControl());
     map.addControl(new LocationLookupControl());
     map.addControl(new MapLabelControl());
@@ -104,7 +147,10 @@ $(document).ready(function () {
 
     if (urlCentreX && urlCentreY && urlCentreZ) {
         const centrePos = new Position(Number(urlCentreX), Number(urlCentreY), Number(urlCentreZ));
+        console.log(centreLatLng)
+
         centreLatLng = centrePos.toLatLng(map);
+        console.log(centreLatLng)
     } else if (urlRegionID) {
         const region = new Region(Number(urlRegionID));
         const centrePos = region.toCentrePosition()
