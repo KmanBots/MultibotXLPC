@@ -159,4 +159,20 @@ $(document).ready(function () {
     }
 
     map.setView(centreLatLng, zoom)
+
+    const ws = new WebSocket('ws://localhost:3030');
+
+    ws.addEventListener('open', () => {
+    console.log('Connected to server');
+    ws.send('Hello, server!');
+    });
+
+    ws.addEventListener('message', (event) => {
+    console.log(`Received message: ${event.data}`);
+    });
+
+    ws.addEventListener('close', () => {
+    console.log('Disconnected from server');
+    });
+
 });
