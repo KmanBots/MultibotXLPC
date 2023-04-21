@@ -37,44 +37,29 @@ $(document).ready(function () {
         renderer: L.canvas()
     });
 
-
-
-    // From one corner of region to another
-    var circle = L.circle([-77.466, -133.5935], {
-        color: 'red',
-        // fillColor: '#f03',
-        // fillOpacity: 0.5,
-        radius: 10
-    }).addTo(map);
-    
-    // // const corner = L.circle([-77.466, -134.297 ],
-
-    var circle = L.circle([-77.466, -134.297], {
-        color: 'blue',
-        // fillColor: '#f03',
-        // fillOpacity: 0.5,
-        radius: 10
-    }).addTo(map);
-
-
-    
-    var circle = L.circle([-77.3895, -134.297], {
-        color: 'green',
-        // fillColor: '#f03',
-        // fillOpacity: 0.5,
-        radius: 10
-    }).addTo(map);
-
-
-    // var circle2 = L.circle([-77.466, -134.297.1 ], {
+    // // From one corner of region to another
+    // var circle = L.circle([-77.466, -133.5935], {
     //     color: 'red',
-    //     fillColor: '#f03',
-    //     fillOpacity: 0.5,
+    //     // fillColor: '#f03',
+    //     // fillOpacity: 0.5,
     //     radius: 10
     // }).addTo(map);
+    
+    // // // const corner = L.circle([-77.466, -134.297 ],
 
-
-    // var marker = L.marker([3065, 3700]).addTo(map);
+    // var circle = L.circle([-77.466, -134.297], {
+    //     color: 'blue',
+    //     // fillColor: '#f03',
+    //     // fillOpacity: 0.5,
+    //     radius: 10
+    // }).addTo(map);
+    
+    // var circle = L.circle([-77.3895, -134.297], {
+    //     color: 'green',
+    //     // fillColor: '#f03',
+    //     // fillOpacity: 0.5,
+    //     radius: 10
+    // }).addTo(map);
 
     map.plane = 0;
 
@@ -163,16 +148,39 @@ $(document).ready(function () {
     const ws = new WebSocket('ws://localhost:3030');
 
     ws.addEventListener('open', () => {
-    console.log('Connected to server');
-    ws.send('Hello, server!');
-    });
+        console.log('Connected to server');
+        ws.send('Hello, server!');
+        });
 
     ws.addEventListener('message', (event) => {
-    console.log(`Received message: ${event.data}`);
+    console.log(`Received message in frontend: ${event.data}`);
+    const data = JSON.parse(event.data);
+
+    const [x1,y1] = convertSystem2ToSystem1(data.x, data.y) 
+
+    console.log(x1, y1)
+
+    // From one corner of region to another
+    var circle = L.circle([x1,y1], {
+        color: 'red',
+        // fillColor: '#f03',
+        // fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map);
+
+
     });
 
     ws.addEventListener('close', () => {
     console.log('Disconnected from server');
     });
-
 });
+
+function convertSystem2ToSystem1(x2, y2) {
+    const a = -0.0210108;
+    const b = -0.0197521;
+    const c = 6942.41;
+    const x1 = a * x2 + c;
+    const y1 = b * y2 + c;
+    return [x1, y1];
+  }
